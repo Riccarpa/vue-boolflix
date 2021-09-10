@@ -1,10 +1,14 @@
 <template>
   <header>
     <div class="container">
-      <img src="@/assets/logo.png" alt="logo" />
+      <figure id="logo">
+        <img src="@/assets/logo.png" alt="logo" />
+        <figcaption>Boolflix</figcaption>
+      </figure>
       <div id="search">
-        <input type="text" placeholder="Cerca..." />
-        <button>Vai</button>
+        <input v-model="query" type="text" placeholder="Cerca..." />
+        <button @click="emitSearch">Vai</button>
+        <!-- <button @click="reset">Reset</button> -->
       </div>
     </div>
   </header>
@@ -13,6 +17,21 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      query: "",
+    };
+  },
+  methods: {
+    emitSearch() {
+      if (this.query.trim()) {
+        this.$emit("search", this.query);
+      }
+    },
+    // reset() {
+    //   this.query = "";
+    // },
+  },
 };
 </script>
 
@@ -26,10 +45,23 @@ header {
     height: 100%;
     @include flex("vertical");
     justify-content: space-between;
-  }
-  #search {
-    * {
-      padding: 10px;
+    figure {
+      height: 100%;
+      @include flex("vertical");
+      img {
+        height: 80%;
+      }
+      figcaption {
+        color: red;
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-left: 1rem;
+      }
+    }
+    #search {
+      * {
+        padding: 10px;
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <section id="library">
     <div class="container">
-      <Card />
+      <Card v-for="(moovie, index) in moovies" :moovie="moovie" :key="index" />
     </div>
   </section>
 </template>
@@ -14,6 +14,7 @@ export default {
   components: {
     Card,
   },
+  props: ["moovies"],
 };
 </script>
 
