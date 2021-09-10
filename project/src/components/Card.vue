@@ -19,7 +19,7 @@
 <script>
 export default {
   name: "Card",
-  props: ["moovie"],
+  props: ["moovie", "serie"],
   methods: {
     flagRender() {
       if (this.moovie.original_language === "it") {
@@ -35,8 +35,8 @@ export default {
 <style lang="scss" scoped>
 .card {
   margin: 2rem;
-}
-img {
-  height: 30px;
+  img {
+    height: 15px;
+  }
 }
 </style>

@@ -2,7 +2,7 @@
   <div id="app">
     <Header @search="ApiCall" />
     <main>
-      <Library :moovies="moovies" />
+      <Library :moovies="moovies" :series="series" />
     </main>
   </div>
 </template>
@@ -20,8 +20,10 @@ export default {
   data() {
     return {
       baseUri: "https://api.themoviedb.org/3/search/movie",
+      baseSeriesUri: "https://api.themoviedb.org/3/search/tv",
       apiKey: "?api_key=e99307154c6dfb0b4750f6603256716d",
       moovies: [],
+      series: [],
     };
   },
   computed: {},
@@ -32,6 +34,13 @@ export default {
           .get(`${this.baseUri}${this.apiKey}&query=${query}`)
           .then((res) => {
             this.moovies = res.data.results;
+          });
+      }
+      if (query) {
+        axios
+          .get(`${this.baseSeriesUri}${this.apiKey}&query=${query}`)
+          .then((res) => {
+            this.series = res.data.results;
           });
       }
     },
