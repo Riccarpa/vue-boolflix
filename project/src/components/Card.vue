@@ -19,7 +19,7 @@
 <script>
 export default {
   name: "Card",
-  props: ["moovie", "serie"],
+  props: ["moovie"],
   methods: {
     flagRender() {
       if (this.moovie.original_language === "it") {

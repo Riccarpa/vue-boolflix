@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "Card",
+  name: "SeriesCard",
   props: ["serie"],
   methods: {
     flagRender() {
