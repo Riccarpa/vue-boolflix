@@ -1,0 +1,8 @@
+@mixin flex($vertical) {
+  display: flex;
+  justify-content: center;
+  justify-content: centerS;
+  @if $vertical == "vertical" {
+    align-items: center;
+  }
+}
