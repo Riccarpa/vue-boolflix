@@ -1,11 +1,12 @@
 <template>
   <div class="card">
     <ul>
+      <li><img :src="coverRender()" alt="" /></li>
       <li>TITOLO: {{ serie.name }}</li>
       <li>TITOLO ORIGINALE: {{ serie.original_name }}</li>
       <li>
         LINGUA:
-        <img :src="flagRender()" :alt="serie.original_language" />
+        <img class="flag" :src="flagRender()" :alt="serie.original_language" />
       </li>
       <li>VOTO: {{ serie.vote_average }}</li>
     </ul>
@@ -24,6 +25,14 @@ export default {
         return require("../images/en.png");
       }
     },
+    coverRender() {
+      const baseUri = "https://image.tmdb.org/t/p/w342";
+
+      if (!this.serie.poster_path) {
+        return require("@/images/poster-placeholder.png");
+      }
+      return `${baseUri}${this.serie.poster_path}`;
+    },
   },
 };
 </script>
@@ -31,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .card {
   margin: 2rem;
-  img {
+  .flag {
     height: 15px;
   }
 }

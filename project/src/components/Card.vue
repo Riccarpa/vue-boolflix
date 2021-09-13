@@ -1,11 +1,13 @@
 <template>
   <div class="card">
     <ul>
+      <li><img :src="coverRender()" alt="" /></li>
       <li>TITOLO: {{ moovie.title }}</li>
       <li>TITOLO ORIGINALE: {{ moovie.original_title }}</li>
       <li>
         LINGUA:
         <img
+          class="flag"
           :src="flagRender()"
           v-text="flagRender()"
           :alt="moovie.original_language"
@@ -28,6 +30,14 @@ export default {
         return require("../images/en.png");
       }
     },
+    coverRender() {
+      const baseUri = "https://image.tmdb.org/t/p/w342";
+
+      if (!this.moovie.poster_path) {
+        return require("@/images/poster-placeholder.png");
+      }
+      return `${baseUri}${this.moovie.poster_path}`;
+    },
   },
 };
 </script>
@@ -35,7 +45,7 @@ export default {
 <style lang="scss" scoped>
 .card {
   margin: 2rem;
-  img {
+  .flag {
     height: 15px;
   }
 }

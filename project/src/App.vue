@@ -21,7 +21,7 @@ export default {
     return {
       baseUri: "https://api.themoviedb.org/3/search/movie",
       baseSeriesUri: "https://api.themoviedb.org/3/search/tv",
-      apiKey: "?api_key=e99307154c6dfb0b4750f6603256716d",
+      apiKey: "?api_key=0027d52b7964d653987c8a470eaa97d8",
       moovies: [],
       series: [],
     };
