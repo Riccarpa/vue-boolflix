@@ -6,9 +6,13 @@
         <figcaption>Boolflix</figcaption>
       </figure>
       <div id="search">
-        <input v-model="query" type="text" placeholder="Cerca..." />
+        <input
+          @keyup.enter="emitSearch"
+          v-model="query"
+          type="text"
+          placeholder="Cerca..."
+        />
         <button @click="emitSearch">Vai</button>
-        <!-- <button @click="reset">Reset</button> -->
       </div>
     </div>
   </header>
@@ -28,9 +32,6 @@ export default {
         this.$emit("search", this.query);
       }
     },
-    // reset() {
-    //   this.query = "";
-    // },
   },
 };
 </script>

@@ -32,11 +32,7 @@ h1 {
   font-size: 40px;
   margin: 2rem;
 }
-.movie-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+.movie-cards,
 .series-cards {
   display: flex;
   justify-content: center;

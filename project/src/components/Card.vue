@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img :src="coverRender()" alt="" />
+    <img class="card-bg" :src="coverRender()" alt="" />
     <ul>
       <li>TITOLO: {{ moovie.title }}</li>
       <li>TITOLO ORIGINALE: {{ moovie.original_title }}</li>

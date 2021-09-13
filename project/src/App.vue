@@ -45,9 +45,6 @@ export default {
       }
     },
   },
-  created() {
-    this.ApiCall();
-  },
 };
 </script>
 
