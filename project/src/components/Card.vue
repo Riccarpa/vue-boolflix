@@ -1,7 +1,7 @@
 <template>
   <div class="card">
+    <img :src="coverRender()" alt="" />
     <ul>
-      <li><img :src="coverRender()" alt="" /></li>
       <li>TITOLO: {{ moovie.title }}</li>
       <li>TITOLO ORIGINALE: {{ moovie.original_title }}</li>
       <li>
@@ -65,15 +65,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.card {
-  margin: 2rem;
-  .flag {
-    height: 15px;
-  }
-  .fa-star {
-    color: yellow;
-  }
-}
-</style>

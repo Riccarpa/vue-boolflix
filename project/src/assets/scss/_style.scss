@@ -23,3 +23,37 @@ ul {
   li {
   }
 }
+
+.card {
+  width: 342px;
+  height: auto;
+  margin: 10px;
+  position: relative;
+  img {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  .flag {
+    height: 15px;
+    width: auto;
+  }
+  .fa-star {
+    color: yellow;
+  }
+}
+
+.card:hover img {
+  opacity: 0.1;
+}
+.card:hover ul {
+  opacity: 1;
+}

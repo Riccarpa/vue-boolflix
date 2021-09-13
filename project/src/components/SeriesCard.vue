@@ -1,7 +1,7 @@
 <template>
   <div class="card">
+    <img :src="coverRender()" alt="" />
     <ul>
-      <li><img :src="coverRender()" alt="" /></li>
       <li>TITOLO: {{ serie.name }}</li>
       <li>TITOLO ORIGINALE: {{ serie.original_name }}</li>
       <li>
@@ -27,12 +27,11 @@ export default {
     voteRender() {
       const vote = Math.ceil(this.serie.vote_average / 2);
       const stars = [];
-      const blackStars = [];
 
       for (var i = 0; i <= vote - 1; i++) {
         stars.push("star");
       }
-      const totalStars = [...stars, ...blackStars];
+      const totalStars = [...stars];
       while (totalStars.length < 5) {
         totalStars.push("blackStar");
       }
@@ -59,15 +58,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.card {
-  margin: 2rem;
-  .flag {
-    height: 15px;
-  }
-  .fa-star {
-    color: yellow;
-  }
-}
-</style>
