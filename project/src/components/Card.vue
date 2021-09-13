@@ -13,7 +13,13 @@
           :alt="moovie.original_language"
         />
       </li>
-      <li>VOTO: {{ moovie.vote_average }}</li>
+      <li>
+        VOTO:<i
+          v-for="(item, index) in voteRender"
+          :key="index"
+          :class="item === 'blackStar' ? 'far fa-star' : 'fas fa-star'"
+        ></i>
+      </li>
     </ul>
   </div>
 </template>
@@ -22,6 +28,28 @@
 export default {
   name: "Card",
   props: ["moovie"],
+  data() {
+    return {
+      blackStars: [],
+    };
+  },
+  computed: {
+    voteRender() {
+      const vote = Math.ceil(this.moovie.vote_average / 2);
+      const stars = [];
+
+      for (var i = 0; i <= vote - 1; i++) {
+        stars.push("star");
+      }
+      const totalStars = [...stars, ...this.blackStars];
+      while (totalStars.length < 5) {
+        totalStars.push("blackStar");
+        // this.blackStars.slice(0).push("blackstar");
+      }
+
+      return totalStars;
+    },
+  },
   methods: {
     flagRender() {
       if (this.moovie.original_language === "it") {
@@ -47,6 +75,9 @@ export default {
   margin: 2rem;
   .flag {
     height: 15px;
+  }
+  .fa-star {
+    color: yellow;
   }
 }
 </style>
