@@ -8,7 +8,13 @@
         LINGUA:
         <img class="flag" :src="flagRender()" :alt="serie.original_language" />
       </li>
-      <li>VOTO: {{ serie.vote_average }}</li>
+      <li>
+        VOTO:<i
+          v-for="(item, index) in voteRender"
+          :key="index"
+          :class="item === 'blackStar' ? 'far fa-star' : 'fas fa-star'"
+        ></i>
+      </li>
     </ul>
   </div>
 </template>
@@ -17,6 +23,23 @@
 export default {
   name: "SeriesCard",
   props: ["serie"],
+  computed: {
+    voteRender() {
+      const vote = Math.ceil(this.serie.vote_average / 2);
+      const stars = [];
+      const blackStars = [];
+
+      for (var i = 0; i <= vote - 1; i++) {
+        stars.push("star");
+      }
+      const totalStars = [...stars, ...blackStars];
+      while (totalStars.length < 5) {
+        totalStars.push("blackStar");
+      }
+
+      return totalStars;
+    },
+  },
   methods: {
     flagRender() {
       if (this.serie.original_language === "it") {
@@ -42,6 +65,9 @@ export default {
   margin: 2rem;
   .flag {
     height: 15px;
+  }
+  .fa-star {
+    color: yellow;
   }
 }
 </style>

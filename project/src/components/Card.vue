@@ -28,23 +28,19 @@
 export default {
   name: "Card",
   props: ["moovie"],
-  data() {
-    return {
-      blackStars: [],
-    };
-  },
+
   computed: {
     voteRender() {
       const vote = Math.ceil(this.moovie.vote_average / 2);
       const stars = [];
+      const blackStars = [];
 
       for (var i = 0; i <= vote - 1; i++) {
         stars.push("star");
       }
-      const totalStars = [...stars, ...this.blackStars];
+      const totalStars = [...stars, ...blackStars];
       while (totalStars.length < 5) {
         totalStars.push("blackStar");
-        // this.blackStars.slice(0).push("blackstar");
       }
 
       return totalStars;
